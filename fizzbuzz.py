@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
 from typing import List
+import argparse
 
 
 def check_fizz(n: int) -> str:
@@ -16,10 +17,15 @@ def check_fizzbuzz(n: int) -> str:
 
 
 def fizzbuzz(n: int) -> List[str]:
-    fizzbuzz_list = []
-    for integer in range(1, n + 1):
-        fizzbuzz_list.append(check_fizzbuzz(integer))
-    return fizzbuzz_list
+    return [check_fizzbuzz(i) for i in range(1, n + 1)]
+
+
+def fizzbuzz_cli():
+    fizzbuzz_parser = argparse.ArgumentParser(description="Fizzbuzz!!!")
+    fizzbuzz_parser.add_argument('number', type=str, help="Input number to print up to")
+    fizzbuzz_args = fizzbuzz_parser.parse_args()
+    n = fizzbuzz_args.number
+    print(fizzbuzz(int(n)))
 
 
 def test_check_fizz():
