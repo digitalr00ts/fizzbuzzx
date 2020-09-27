@@ -1,3 +1,4 @@
+#!/usr/bin/env python3
 from typing import List
 
 
@@ -47,9 +48,10 @@ def test_check_fizzbuzz_001():
 
 
 def test_fizzbuzz():
-    n = 5
+    n = 15
     result = fizzbuzz(n)
-    assert result == ["1", "2", "fizz", "4", "buzz"]
+    assert result == ['1', '2', 'fizz', '4', 'buzz', 'fizz', '7',
+                      '8', 'fizz', 'buzz', '11', 'fizz', '13', '14', 'fizzbuzz']
 
 
 def main():
