@@ -1,3 +1,6 @@
+from typing import List
+
+
 def check_fizz(n: int) -> str:
     return "fizz" if n % 3 == 0 else ""
 
@@ -9,6 +12,13 @@ def check_buzz(n: int) -> str:
 def check_fizzbuzz(n: int) -> str:
     x = check_fizz(n) + check_buzz(n)
     return str(n) if x == "" else x
+
+
+def fizzbuzz(n: int) -> List[str]:
+    fizzbuzz_list = []
+    for integer in range(1, n + 1):
+        fizzbuzz_list.append(check_fizzbuzz(integer))
+    return fizzbuzz_list
 
 
 def test_check_fizz():
@@ -34,3 +44,18 @@ def test_check_fizzbuzz_001():
     n = 1
     result = check_fizzbuzz(n)
     assert result == "1"
+
+
+def test_fizzbuzz():
+    n = 5
+    result = fizzbuzz(n)
+    assert result == ["1", "2", "fizz", "4", "buzz"]
+
+
+def main():
+    n = input("Please enter a number: ")
+    print(fizzbuzz(int(n)))
+
+
+if __name__ == "__main__":
+    main()
