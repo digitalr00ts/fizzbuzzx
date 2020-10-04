@@ -22,7 +22,7 @@ def fizzbuzz(n: int) -> List[str]:
 
 def fizzbuzz_cli():
     fizzbuzz_parser = argparse.ArgumentParser(description="Fizzbuzz!!!")
-    fizzbuzz_parser.add_argument('number', type=str, help="Input number to print up to")
+    fizzbuzz_parser.add_argument("number", type=str, help="Input number to print up to")
     fizzbuzz_args = fizzbuzz_parser.parse_args()
     n = fizzbuzz_args.number
     print(fizzbuzz(int(n)))
