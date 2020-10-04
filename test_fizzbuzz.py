@@ -2,33 +2,33 @@ from fizzbuzz import fizzbuzz, check_fizzbuzz, check_buzz, check_fizz
 
 
 def test_check_fizz():
-    n = 3
-    result = check_fizz(n)
+    number = 3
+    result = check_fizz(number)
     assert result == "fizz"
 
 
 def test_check_buzz():
-    n = 5
-    result = check_buzz(n)
+    number = 5
+    result = check_buzz(number)
     assert result == "buzz"
 
 
 def test_check_fizzbuzz():
-    n = 15
-    result = check_fizzbuzz(n)
+    number = 15
+    result = check_fizzbuzz(number)
     assert result == "fizzbuzz"
 
 
 def test_check_fizzbuzz_001():
-    """Given when n is NOT a multiple of 3 and 5"""
-    n = 1
-    result = check_fizzbuzz(n)
+    """Given when number is NOT a multiple of 3 and 5"""
+    number = 1
+    result = check_fizzbuzz(number)
     assert result == "1"
 
 
 def test_fizzbuzz():
-    n = 15
-    result = fizzbuzz(n)
+    number = 15
+    result = fizzbuzz(number)
     assert result == [
         "1",
         "2",
