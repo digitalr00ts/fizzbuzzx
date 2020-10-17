@@ -2,6 +2,14 @@
 """ Fizzbuzz extreme program (are you ready to see how much of a try hard I am)"""
 from typing import List
 import argparse
+import logging
+
+logging.basicConfig(
+    filename="fizzbuzz.log",
+    level=logging.DEBUG,
+    format="%(asctime)s - %(name)s - %(levelname)s - %(message)s",
+)
+LOGGER = logging.getLogger(__file__)
 
 
 def check_fizz(number: int) -> str:
@@ -87,8 +95,12 @@ def fizzbuzz_cli():
     fizzbuzz_parser = argparse.ArgumentParser(description="Fizzbuzz!!!")
     fizzbuzz_parser.add_argument("number", type=str, help="Input number to print up to")
     fizzbuzz_args = fizzbuzz_parser.parse_args()
-    number = fizzbuzz_args.number
-    print(fizzbuzz(int(number)))
+    try:
+        number = int(fizzbuzz_args.number)
+    except ValueError:
+        LOGGER.error("Input is not an integer!")
+    else:
+        print(fizzbuzz(number))
 
 
 def main():
@@ -98,4 +110,11 @@ def main():
 
 
 if __name__ == "__main__":
-    main()
+    try:
+        exit(main())
+    except Exception as e:
+        LOGGER.error("Oh No! Something went wrong with your script!")
+        exit(1)
+
+# errors to expect
+# someone inputted a letter as an input/character that is not a number
