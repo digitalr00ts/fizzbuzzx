@@ -5,11 +5,27 @@ import argparse
 import logging
 
 logging.basicConfig(
-    filename="fizzbuzz.log",
+    # filename="fizzbuzz.log",
     level=logging.DEBUG,
     format="%(asctime)s - %(name)s - %(levelname)s - %(message)s",
 )
 LOGGER = logging.getLogger(__file__)
+
+
+class FizzbuzzException(Exception):
+    """Base class for fizz buzz exceptions"""
+    fmt = "{}"
+
+    def __init__(self, msg):
+        exception_msg = self.fmt.format(msg)
+        super().__init__(self, exception_msg)
+
+
+class FizzbuzzInputError(FizzbuzzException, ValueError):
+    """ """
+    def __init__(self, input_value):
+        msg = f"{input_value} is not a number! Please input an int!"
+        super().__init__(msg)
 
 
 def check_fizz(number: int) -> str:
@@ -90,31 +106,39 @@ def fizzbuzz(number: int) -> List[str]:
     return [check_fizzbuzz(i) for i in range(1, number + 1)]
 
 
+def input_validation(fizzbuzz_input) -> int:
+    try:
+        number = int(fizzbuzz_input)
+    except ValueError:
+        raise FizzbuzzInputError(fizzbuzz_input)
+        # LOGGER.error("Input is not an integer!")
+    return number
+
+
 def fizzbuzz_cli():
     """ CLI for fizzbuzz"""
     fizzbuzz_parser = argparse.ArgumentParser(description="Fizzbuzz!!!")
     fizzbuzz_parser.add_argument("number", type=str, help="Input number to print up to")
     fizzbuzz_args = fizzbuzz_parser.parse_args()
-    try:
-        number = int(fizzbuzz_args.number)
-    except ValueError:
-        LOGGER.error("Input is not an integer!")
-    else:
-        print(fizzbuzz(number))
+    number = input_validation(fizzbuzz_args.number)
+    # LOGGER.error("Input is not an integer!")
+    print(fizzbuzz(number))
 
 
-def main():
+def main() -> None:
     """ Driver when running as script"""
-    number = input("Please enter a number: ")
-    print(fizzbuzz(int(number)))
+    number = input_validation(input("Please enter a number: "))
+    print(fizzbuzz(number))
 
 
 if __name__ == "__main__":
+    # main()
     try:
-        exit(main())
-    except Exception as e:
-        LOGGER.error("Oh No! Something went wrong with your script!")
-        exit(1)
+        main()
+    except FizzbuzzException as err:
+        #LOGGER.error("Oh No! Something went wrong with your script!")
+        #exit(1)
+        exit(logging.error(err.args[1]))
 
 # errors to expect
 # someone inputted a letter as an input/character that is not a number
