@@ -3,6 +3,7 @@
 from typing import List
 import argparse
 import logging
+import sys
 
 logging.basicConfig(
     # filename="fizzbuzz.log",
@@ -13,7 +14,14 @@ LOGGER = logging.getLogger(__file__)
 
 
 class FizzbuzzException(Exception):
-    """Base class for fizz buzz exceptions"""
+    """Base class for fizz buzz exceptions
+
+    Args:
+        exception_msg (str): Error code for fizzbuzz exceptions
+
+    Attributes:
+        msg (str): Exception error code
+    """
     fmt = "{}"
 
     def __init__(self, msg):
@@ -22,7 +30,13 @@ class FizzbuzzException(Exception):
 
 
 class FizzbuzzInputError(FizzbuzzException, ValueError):
-    """ """
+    """Class for fizzbuzz value error
+
+    Args:
+        input_value (str): Value error message if input is not an int
+    Returns:
+        msg(str): Value error message
+    """
     def __init__(self, input_value):
         msg = f"{input_value} is not a number! Please input an int!"
         super().__init__(msg)
@@ -107,10 +121,23 @@ def fizzbuzz(number: int) -> List[str]:
 
 
 def input_validation(fizzbuzz_input) -> int:
+    """Validates if the user input is an int or not
+
+    If input is not an int than an exception is thrown.
+
+    Args:
+        fizzbuzz_input: User input to generate numbers up to
+
+    Returns:
+        number: The number of the input
+
+    Raises:
+        ValueError: If input is not an integer
+    """
     try:
         number = int(fizzbuzz_input)
-    except ValueError:
-        raise FizzbuzzInputError(fizzbuzz_input)
+    except ValueError as bad_input:
+        raise FizzbuzzInputError(fizzbuzz_input) from bad_input
         # LOGGER.error("Input is not an integer!")
     return number
 
@@ -138,7 +165,7 @@ if __name__ == "__main__":
     except FizzbuzzException as err:
         #LOGGER.error("Oh No! Something went wrong with your script!")
         #exit(1)
-        exit(logging.error(err.args[1]))
+        sys.exit(logging.error(err.args[1]))
 
 # errors to expect
 # someone inputted a letter as an input/character that is not a number
