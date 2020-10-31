@@ -2,6 +2,13 @@
 requires = ["setuptools >= 40.6.0", "wheel"]
 build-backend = "setuptools.build_meta"
 
+[tool.coverage.run]
+branch = true
+
+[tool.coverage.report]
+precision = 2
+show_missing = true
+
 [tool.pytest.ini_options]
-addopts = '--verbosity=2 --doctest-modules --ignore=docs'
+addopts = '--verbosity=2 --doctest-modules --ignore=docs --cov fizzbuzz'
 
