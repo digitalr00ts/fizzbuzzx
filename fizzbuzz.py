@@ -22,6 +22,7 @@ class FizzbuzzException(Exception):
     Attributes:
         msg (str): Exception error code
     """
+
     fmt = "{}"
 
     def __init__(self, msg):
@@ -37,6 +38,7 @@ class FizzbuzzInputError(FizzbuzzException, ValueError):
     Returns:
         msg(str): Value error message
     """
+
     def __init__(self, input_value):
         msg = f"{input_value} is not a number! Please input an int!"
         super().__init__(msg)
@@ -163,8 +165,8 @@ if __name__ == "__main__":
     try:
         main()
     except FizzbuzzException as err:
-        #LOGGER.error("Oh No! Something went wrong with your script!")
-        #exit(1)
+        # LOGGER.error("Oh No! Something went wrong with your script!")
+        # exit(1)
         sys.exit(logging.error(err.args[1]))
 
 # errors to expect
