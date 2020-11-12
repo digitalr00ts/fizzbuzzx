@@ -1,4 +1,13 @@
-# fizzbuzz
+# fizzbuzzX
+
+## About
+An unnecessarily over-engineered fizzbuzz solution 
+
+## Features
+- tox
+- pytest
+- black
+- Auto-generated Documentation
 
 ## License
 Copyright 2020 pelmini
