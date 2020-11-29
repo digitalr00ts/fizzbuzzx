@@ -1,4 +1,14 @@
-# fizzbuzz
+# fizzbuzzx
+
+## About
+An unnecessarily over-engineered fizzbuzz solution. 
+
+## Features
+- pytest
+- Auto-generated Sphinx Documentation
+- black
+- pylint
+- tox
 
 ## License
 Copyright 2020 pelmini
