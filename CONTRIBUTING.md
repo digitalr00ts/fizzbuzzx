@@ -10,7 +10,7 @@ If you are looking to help with code contribution, our project uses python3, and
 
 1. Find an issue that you are interested in addressing or a feature that you would like to add.
 2. Fork the repository associated with the issue to your local GitHub organization. This means that you will have a copy of the repository under your-GitHub-username/repository-name.
-3. Clone the repository to your local machine using git clone https://github.com/github-username/repository-name.git.
+3. Clone the repository to your local machine using git clone https://github.com/github-username/fizzbuzzx.git.
 4. Create a new branch for your fix using git checkout -b branch-name-here.
 5. Make the appropriate changes for the issue you are trying to address or the feature that you want to add.
 7. Use git commit -m "Insert a short message of the changes made here" to store the contents of the index with a descriptive message. Please also reference the issue that your commit is resolving in the commit message. 
