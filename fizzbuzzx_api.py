@@ -1,5 +1,5 @@
 from fastapi import FastAPI
-from fizzbuzz import fizzbuzz
+from fizzbuzzx import fizzbuzz
 
 app = FastAPI()
 
