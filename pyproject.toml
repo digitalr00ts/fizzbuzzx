@@ -10,4 +10,4 @@ precision = 2
 show_missing = true
 
 [tool.pytest.ini_options]
-addopts = '--verbosity=2 --doctest-modules --ignore=docs --cov fizzbuzzx'
+addopts = '--verbosity=2 --doctest-modules --ignore=docs --cov-report=term --cov fizzbuzzx'

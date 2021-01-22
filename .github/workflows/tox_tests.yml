@@ -1,4 +1,4 @@
-name: Fizzbuzz Check
+name: Tests
 
 on: [push, pull_request]
 
@@ -20,4 +20,10 @@ jobs:
         run: pip install tox
       - name: Run Tox
         # Run tox using the version of Python in `PATH`
-        run: tox -e py
+        run: tox -e py -- --cov-report=xml
+      - name: Upload coverage to Codecov
+        uses: codecov/codecov-action@v1
+        with:
+          token: ${{ secrets.CODECOV_TOKEN }}
+          env_vars: OS,PYTHON
+          fail_ci_if_error: true
