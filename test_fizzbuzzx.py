@@ -1,5 +1,5 @@
 """Test file for fizzbuzz"""
-from fizzbuzz import fizzbuzz, check_fizzbuzz, check_buzz, check_fizz
+from fizzbuzzx import fizzbuzz, check_fizzbuzz, check_buzz, check_fizz
 
 
 def test_check_fizz():

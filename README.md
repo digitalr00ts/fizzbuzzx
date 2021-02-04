@@ -1,7 +1,9 @@
+[![codecov](https://codecov.io/gh/digitalr00ts/fizzbuzzx/branch/master/graph/badge.svg?token=O3KDPPJSCS)](https://codecov.io/gh/digitalr00ts/fizzbuzzx)
+
 # fizzbuzzx
 
 ## About
-An unnecessarily over-engineered fizzbuzz solution. 
+An unnecessarily over-engineered fizzbuzz solution.
 
 ## Features
 - pytest
