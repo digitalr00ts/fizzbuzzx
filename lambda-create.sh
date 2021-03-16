@@ -1,5 +1,7 @@
 #!/bin/bash
 
+zip -r aws_fizzbuzzx.zip aws_function.py
+
 aws lambda create-function \
     --function-name "aws_fizzbuzzx" \
     --runtime "python3.8" \
