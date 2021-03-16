@@ -2,12 +2,35 @@
 requires = ["setuptools >= 40.6.0", "wheel"]
 build-backend = "setuptools.build_meta"
 
+[tool.black]
+target-version = ['py38']
+
 [tool.coverage.run]
 branch = true
 
 [tool.coverage.report]
 precision = 2
 show_missing = true
+
+[tool.flakehell.plugins]
+dlint = ['+*']
+flake8-bandit = ['+*']
+flake8-black = ['+*']
+flake8-bugbear = ['+*']
+flake8-comprehensions = ['+*']
+flake8-darglint = ['+*']
+flake8-debugger = ['+*']
+flake8-docstrings = ['+*', '-D107']
+flake8-eradicate = ['+*']
+flake8-isort = ['+*']
+flake8-pytest-style = ['+*']
+flake8-rst-docstrings = ['+*']
+mccabe = ['+*']
+pep8-naming = ['+*']
+pyflakes = ['+*']
+
+[tool.isort]
+profile = "black"
 
 [tool.pytest.ini_options]
 addopts = '--verbosity=2 --doctest-modules --ignore=docs --cov-report=term --cov fizzbuzzx'

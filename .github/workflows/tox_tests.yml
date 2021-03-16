@@ -2,27 +2,38 @@ name: Tests
 
 on:
   push:
-    paths:
-      - "**/*.py"
-      - "setup.cfg"
+    branches:
+      - master
   pull_request:
 
-jobs:
-  build:
 
+jobs:
+
+  lint:
+    name: Lint
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-python@v2
+        with:
+          python-version: '3.x'
+      - run: python3 -m pip install tox
+      - run: tox -e lint
+
+  py:
+    name: Py
     runs-on: ubuntu-latest
     strategy:
       matrix:
         python: [3.6,  3.7, 3.8, 3.9]
-
     steps:
       - uses: actions/checkout@v2
       - name: Setup Python
         uses: actions/setup-python@v2
         with:
           python-version: ${{ matrix.python }}
-      - name: Install Tox and any other packages
-        run: pip install tox
+      - name: Install Tox
+        run: python3 -m pip install tox
       - name: Run Tox
         # Run tox using the version of Python in `PATH`
         run: tox -e py -- --cov-report=xml
