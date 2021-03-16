@@ -13,21 +13,28 @@
 
 # pylint: disable=invalid-name
 
-import os
+import re
 import sys
+from datetime import datetime
+from importlib.metadata import metadata
+from pathlib import Path
+
 import sphinx_rtd_theme  # pylint: disable=unused-import
 
-sys.path.insert(0, os.path.abspath(".."))
+sys.path.insert(0, Path("..").absolute())
 
 
 # -- Project information -----------------------------------------------------
 
-project = "fizzbuzz"
-copyright = "2020, pelmini"
-author = "pelmini"
+md_ = metadata("fizzbuzzx")
+project = md_.get("Name")
+author = md_.get("Author")
+copyright = f"{datetime.now().year}, {author}"  # pylint: disable=redefined-builtin
 
 # The full version, including alpha/beta/rc tags
-release = "0.1.0"
+release = md_.get("Version")
+# The short X.Y version
+version = re.match(r"v?\d+(\.\d+)*", release)[0]
 
 # -- General configuration ---------------------------------------------------
 
@@ -59,4 +66,4 @@ html_show_sphinx = False
 # Add any paths that contain custom static files (such as style sheets) here,
 # relative to this directory. They are copied after the builtin static files,
 # so a file named "default.css" will overwrite the builtin "default.css".
-html_static_path = ["_static"]
+# html_static_path = ["_static"]
