@@ -1,5 +1,5 @@
 [build-system]
-requires = ["setuptools >= 40.6.0", "wheel"]
+requires = ["setuptools >= 42", "wheel", "setuptools_scm[toml]>=3.4"]
 build-backend = "setuptools.build_meta"
 
 [tool.black]
@@ -34,3 +34,5 @@ profile = "black"
 
 [tool.pytest.ini_options]
 addopts = '--verbosity=2 --doctest-modules --ignore=docs --cov-report=term --cov fizzbuzzx'
+
+[tool.setuptools_scm]
