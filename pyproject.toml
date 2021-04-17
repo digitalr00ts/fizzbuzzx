@@ -29,6 +29,9 @@ mccabe = ['+*']
 pep8-naming = ['+*']
 pyflakes = ['+*']
 
+[tool.flakehell.exceptions."test*.py"]
+flake8-bandit = ['-S101']
+
 [tool.isort]
 profile = "black"
 
