@@ -132,10 +132,10 @@ def input_validation(fizzbuzz_input) -> int:
         fizzbuzz_input: User input to generate numbers up to
 
     Returns:
-        number: The number of the input
+        int: The number of the input
 
     Raises:
-        ValueError: If input is not an integer
+        FizzbuzzInputError: If input is not an integer
     """
     try:
         number = int(fizzbuzz_input)
