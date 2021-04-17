@@ -4,6 +4,7 @@ API framework for fizzbuzzx
 from typing import Dict
 
 from fastapi import FastAPI
+
 from fizzbuzzx import fizzbuzz
 
 app = FastAPI()

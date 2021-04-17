@@ -1,9 +1,9 @@
 #!/usr/bin/env python3
 """ Fizzbuzz extreme program (are you ready to see how much of a try hard I am)"""
-from typing import List
 import argparse
 import logging
 import sys
+from typing import List
 
 logging.basicConfig(
     # filename="fizzbuzz.log",
