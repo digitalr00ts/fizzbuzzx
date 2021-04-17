@@ -6,7 +6,6 @@ import sys
 from typing import List
 
 logging.basicConfig(
-    # filename="fizzbuzz.log",
     level=logging.DEBUG,
     format="%(asctime)s - %(name)s - %(levelname)s - %(message)s",
 )
@@ -140,7 +139,6 @@ def input_validation(fizzbuzz_input) -> int:
         number = int(fizzbuzz_input)
     except ValueError as bad_input:
         raise FizzbuzzInputError(fizzbuzz_input) from bad_input
-        # LOGGER.error("Input is not an integer!")
     return number
 
 
@@ -150,7 +148,6 @@ def fizzbuzz_cli():
     fizzbuzz_parser.add_argument("number", type=str, help="Input number to print up to")
     fizzbuzz_args = fizzbuzz_parser.parse_args()
     number = input_validation(fizzbuzz_args.number)
-    # LOGGER.error("Input is not an integer!")
     print(fizzbuzz(number))
 
 
@@ -161,13 +158,7 @@ def main() -> None:
 
 
 if __name__ == "__main__":
-    # main()
     try:
         main()
     except FizzbuzzException as err:
-        # LOGGER.error("Oh No! Something went wrong with your script!")
-        # exit(1)
         sys.exit(logging.error(err.args[1]))
-
-# errors to expect
-# someone inputted a letter as an input/character that is not a number
