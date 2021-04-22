@@ -1,12 +1,11 @@
 #!/usr/bin/env python3
-""" Fizzbuzz extreme program (are you ready to see how much of a try hard I am)"""
+"""Fizzbuzz extreme program (are you ready to see how much of a try hard I am)."""
 import argparse
 import logging
 import sys
 from typing import Any, List, Optional, Sequence
 
 logging.basicConfig(
-    # filename="fizzbuzz.log",
     level=logging.DEBUG,
     format="%(asctime)s - %(name)s - %(levelname)s - %(message)s",
 )
@@ -14,7 +13,7 @@ LOGGER = logging.getLogger(__file__)
 
 
 class FizzbuzzException(Exception):
-    """Base class for fizz buzz exceptions
+    """Base class for fizz buzz exceptions.
 
     Args:
         exception_msg (str): Error code for fizzbuzz exceptions
@@ -31,7 +30,7 @@ class FizzbuzzException(Exception):
 
 
 class FizzbuzzInputError(FizzbuzzException, ValueError):
-    """Class for fizzbuzz value error
+    """Class for fizzbuzz value error.
 
     Args:
         input_value (str): Value error message if input is not an int
@@ -45,7 +44,7 @@ class FizzbuzzInputError(FizzbuzzException, ValueError):
 
 
 def check_fizz(number: int) -> str:
-    """If a integer is divisible by three function outputs fizz
+    """If a integer is divisible by three function outputs fizz.
 
     Args:
         number (int): integer to check if divisible by three
@@ -63,7 +62,7 @@ def check_fizz(number: int) -> str:
 
 
 def check_buzz(number: int) -> str:
-    """If a integer is divisible by five function outputs buzz
+    """If a integer is divisible by five function outputs buzz.
 
     Args:
         number (int): integer to check if divisible by five
@@ -81,7 +80,7 @@ def check_buzz(number: int) -> str:
 
 
 def check_fizzbuzz(number: int) -> str:
-    """If a integer is divisible by five and three function outputs fizzbuzz
+    """If a integer is divisible by five and three function outputs fizzbuzz.
 
     Args:
         number (int): integer to check if divisible by five and three
@@ -104,7 +103,9 @@ def check_fizzbuzz(number: int) -> str:
 
 
 def fizzbuzz(number: int) -> List[str]:
-    """Program that takes a range of numbers from 1 to n. Checks if a number divisible by
+    """Create a list of fizzbuzz results.
+
+    Program that takes a range of numbers from 1 to n. Checks if a number divisible by
     three are “Fizz”. Checks if number divisible by five are "Buzz". Check if numbers are
     divisible by both three and five are "Fizzbuzz". Else, the string of the integer is returned.
 
@@ -123,7 +124,7 @@ def fizzbuzz(number: int) -> List[str]:
 
 
 def input_validation(fizzbuzz_input) -> int:
-    """Validates if the user input is an int or not
+    """Validate if the user input is an int or not.
 
     If input is not an int than an exception is thrown.
 
@@ -131,43 +132,36 @@ def input_validation(fizzbuzz_input) -> int:
         fizzbuzz_input: User input to generate numbers up to
 
     Returns:
-        number: The number of the input
+        int: The number of the input
 
     Raises:
-        ValueError: If input is not an integer
+        FizzbuzzInputError: If input is not an integer
     """
     try:
         number = int(fizzbuzz_input)
     except ValueError as bad_input:
         raise FizzbuzzInputError(fizzbuzz_input) from bad_input
-        # LOGGER.error("Input is not an integer!")
     return number
 
 
 def fizzbuzzx_cli(args: Optional[Sequence[Any]] = None):
-    """ CLI for fizzbuzz"""
+    """CLI for fizzbuzz."""
+
     fizzbuzz_parser = argparse.ArgumentParser(description="Fizzbuzz!!!")
     fizzbuzz_parser.add_argument("number", type=int, help="Input number to print up to")
     fizzbuzz_args = fizzbuzz_parser.parse_args(args)
     number = input_validation(fizzbuzz_args.number)
-    # LOGGER.error("Input is not an integer!")
     print(fizzbuzz(number))
 
 
 def main() -> None:
-    """ Driver when running as script"""
+    """Driver when running as script."""
     number = input_validation(input("Please enter a number: "))
     print(fizzbuzz(number))
 
 
 if __name__ == "__main__":
-    # main()
     try:
         main()
     except FizzbuzzException as err:
-        # LOGGER.error("Oh No! Something went wrong with your script!")
-        # exit(1)
         sys.exit(logging.error(err.args[1]))
-
-# errors to expect
-# someone inputted a letter as an input/character that is not a number
