@@ -3,7 +3,7 @@
 import argparse
 import logging
 import sys
-from typing import List
+from typing import Any, List, Optional, Sequence
 
 logging.basicConfig(
     level=logging.DEBUG,
@@ -144,11 +144,12 @@ def input_validation(fizzbuzz_input) -> int:
     return number
 
 
-def fizzbuzz_cli():
+def fizzbuzzx_cli(args: Optional[Sequence[Any]] = None):
     """CLI for fizzbuzz."""
+
     fizzbuzz_parser = argparse.ArgumentParser(description="Fizzbuzz!!!")
-    fizzbuzz_parser.add_argument("number", type=str, help="Input number to print up to")
-    fizzbuzz_args = fizzbuzz_parser.parse_args()
+    fizzbuzz_parser.add_argument("number", type=int, help="Input number to print up to")
+    fizzbuzz_args = fizzbuzz_parser.parse_args(args)
     number = input_validation(fizzbuzz_args.number)
     print(fizzbuzz(number))
 

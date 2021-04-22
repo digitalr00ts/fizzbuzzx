@@ -1,5 +1,6 @@
+
 """Test file for fizzbuzz."""
-from fizzbuzzx import check_buzz, check_fizz, check_fizzbuzz, fizzbuzz
+from fizzbuzzx import check_buzz, check_fizz, check_fizzbuzz, fizzbuzz, fizzbuzzx_cli
 
 
 def test_check_fizz():
@@ -51,3 +52,11 @@ def test_fizzbuzz():
         "14",
         "fizzbuzz",
     ]
+
+
+def test_cli(capsys):
+    """Test CLI."""
+    args = ["3"]
+    fizzbuzzx_cli(args)
+    captured = capsys.readouterr()
+    assert captured.out.strip() == "['1', '2', 'fizz']"
